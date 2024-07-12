@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+option go_package = "github.com/firdavstoshev/grpc-go/account";
+
+package account;
+
+service AccountService {
+  rpc GetAccount(GetAccountRequest) returns (GetAccountResponse) {}
+  rpc UpdateAccountName(UpdateAccountNameRequest) returns (UpdateAccountNameResponse) {}
+  rpc UpdateAccountBalance(UpdateAccountBalanceRequest) returns (UpdateAccountBalanceResponse) {}
+  rpc CreateAccount(CreateAccountRequest) returns (CreateAccountResponse) {}
+  rpc DeleteAccount(DeleteAccountRequest) returns (DeleteAccountResponse) {}
+}
+
+message Account {
+  string id = 1;
+  string name = 2;
+  double balance = 3;
+}
+
+message GetAccountRequest {
+  string id = 1;
+}
+
+message GetAccountResponse {
+  Account account = 1;
+}
+
+message UpdateAccountNameRequest {
+  string id = 1;
+  string new_name = 2;
+}
+
+message UpdateAccountNameResponse {
+  Account account = 1;
+}
+
+message UpdateAccountBalanceRequest {
+  string id = 1;
+  double new_balance = 2;
+}
+
+message UpdateAccountBalanceResponse {
+  Account account = 1;
+}
+
+message CreateAccountRequest {
+  string name = 1;
+}
+
+message CreateAccountResponse {
+  Account account = 1;
+}
+
+message DeleteAccountRequest {
+  string id = 1;
+}
+
+message DeleteAccountResponse {
+  string message = 1;
+}
